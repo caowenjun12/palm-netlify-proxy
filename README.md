@@ -1,15 +1,17 @@
-# palm-netlify-proxy
+curl https://{glittery-semolina-0b6a1c.netlify.app}/v1/models/gemini-pro:generateContent?key={AIzaSyAD7CF60ZdCAItBXuQBZRlMEn7Ep--orm8} \
+   -H 'Content-Type: application/json' \
+   -X POST \
+   -d '{ "contents":[
+   { "parts":[{"text": "Hi"}]}
+   ]
+}'
 
-Google PaLM API proxy on Netlify Edge
-
-
-## Deploy
-
-### Deploy With Netlify
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/antergone/palm-netlify-proxy)
-
-
-## Discussion
-
-Please Visit Simon's Blog. https://simonmy.com/posts/使用netlify反向代理google-palm-api.html
+curl https://{glittery-semolina-0b6a1c.netlify.app}/v1/models/gemini-pro:streamGenerateContent?key={AIzaSyAD7CF60ZdCAItBXuQBZRlMEn7Ep--orm8}&alt=sse \
+   -H 'Content-Type: application/json' \
+   --no-buffer \
+   -d '{ "contents":[
+         {"role": "user",
+            "parts":[{"text": "Hi"}]
+         }
+         ]
+      }' > response.json
